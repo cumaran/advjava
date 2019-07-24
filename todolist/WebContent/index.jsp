@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>todolist</title>
-<link href="css/bootstrap.min.css" rel="stylesheet"> 
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet">  -->
 <style>
 .size{
 width:72px;
@@ -24,8 +24,15 @@ function showSearch(){
 }
 </script>
 </head>
-<body>
+<body bgcolor='<%=session.getAttribute("color")%>'>
 <div class='container'>
+<%
+if(session.getAttribute("uid")==null){
+	response.sendRedirect("login.html");
+}
+%>
+<h2>Welcome <%=session.getAttribute("uid") %></h2>
+<a href="logout">Logout</a>
 <h1 class='alert-info text-center'>TodoList App</h1>
 <form action="todo" method="post">
 <div class='form-group'>

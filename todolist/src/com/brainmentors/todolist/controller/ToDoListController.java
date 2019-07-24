@@ -32,6 +32,7 @@ public class ToDoListController extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String btn = request.getParameter("searchitbtn");
 		if(btn!=null && btn.equals("SearchIt")) {
 			RequestDispatcher rd  = request.getRequestDispatcher("searchctrl");

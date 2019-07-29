@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    import ="java.util.ArrayList, com.brainmentors.todolist.helper.ToDoList"
    	 pageEncoding="UTF-8"%>
+   	 <%@taglib prefix="brain" tagdir="/WEB-INF/tags" %>
+   	 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>todolist</title>
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet">  -->
+ <link href="css/bootstrap.min.css" rel="stylesheet">  
 <style>
 .size{
 width:72px;
@@ -26,13 +28,15 @@ function showSearch(){
 </head>
 <body bgcolor='<%=session.getAttribute("color")%>'>
 <div class='container'>
+<brain:clock w="200" h="200"/>
 <%
 if(session.getAttribute("uid")==null){
 	response.sendRedirect("login.html");
 }
 %>
-<h2>Welcome <%=session.getAttribute("uid") %></h2>
-<a href="logout">Logout</a>
+<h2>Welcome ${sessionScope.uid }</h2>
+<%-- <h2>Welcome <%=session.getAttribute("uid") %></h2> --%>
+<a href="logout.todo">Logout</a>
 <h1 class='alert-info text-center'>TodoList App</h1>
 <form action="todo" method="post">
 <div class='form-group'>
@@ -84,7 +88,17 @@ if(session.getAttribute("uid")==null){
 </tr>
 </thead>
 <tbody>
-<%
+<c:forEach items="${mydata}" var="obj" varStatus="w">
+<tr>
+<td>${obj.id}</td>
+<td>${obj.name }</td>
+<td>${obj.desc }</td>
+<td>${obj.date }</td>
+<td><a href="delete?id=${obj.id}"><img class="size" src="images/deleteicon.png"></a></td>
+</tr>
+</c:forEach>
+
+<%-- <%
 ArrayList<ToDoList> list = (ArrayList<ToDoList>)request.getAttribute("mydata");
 	if(list!=null){
 		for(ToDoList obj : list){
@@ -100,7 +114,7 @@ ArrayList<ToDoList> list = (ArrayList<ToDoList>)request.getAttribute("mydata");
 		}
 	}
 %>
-</tbody>
+ --%></tbody>
 </table>
 </form>
 </div>

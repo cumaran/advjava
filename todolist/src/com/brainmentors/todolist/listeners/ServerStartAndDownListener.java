@@ -33,12 +33,12 @@ public class ServerStartAndDownListener implements ServletContextListener {
          // TODO Auto-generated method stub
     	for(int i = 1; i<=100; i++) {
     		System.out.println("Caching "+i);
-    		try {
-				Thread.sleep(350);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//    		try {
+//				Thread.sleep(350);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
     	}
     }
 	

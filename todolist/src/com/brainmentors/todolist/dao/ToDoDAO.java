@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
+
 public interface ToDoDAO {
-	public static  String  register(String userid, String pwd) throws ClassNotFoundException, SQLException {
+	public static  String  register(String userid, String pwd) throws ClassNotFoundException, SQLException, NamingException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -25,7 +27,7 @@ public interface ToDoDAO {
 		//con.close();
 		return msg;
 	}
-public static  String  login(String userid, String pwd) throws ClassNotFoundException, SQLException {
+public static  String  login(String userid, String pwd) throws ClassNotFoundException, SQLException, NamingException {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;

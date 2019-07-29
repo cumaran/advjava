@@ -19,7 +19,7 @@ import com.brainmentors.todolist.helper.TodoListOperations;
 /**
  * Servlet implementation class ToDoListController
  */
-@WebServlet("/todo")
+@WebServlet("/todo.todo")
 public class ToDoListController extends HttpServlet {
 	TodoListOperations opr ;
 	public void init() {

@@ -1,14 +1,22 @@
 package com.brainmentors.todolist.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public interface CommonDAO {
-	 static Connection getConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
+	 static Connection getConnection() throws ClassNotFoundException, SQLException, NamingException {
+		//Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = null;
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/todoapp","root","amit123456");
+		InitialContext initContext = new InitialContext();
+		Context context = (Context) initContext.lookup("java:comp/env");
+		DataSource dataSource = (DataSource)context.lookup("jdbc/todopool");
+		con = dataSource.getConnection();
+		//con = DriverManager.getConnection("jdbc:mysql://localhost:3306/todoapp","root","amit123456");
 		if(con!=null) {
 			System.out.println("Connnection Created.");
 			//con.close();

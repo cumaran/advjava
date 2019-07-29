@@ -3,6 +3,7 @@ package com.brainmentors.todolist.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -59,6 +60,10 @@ public class LoginController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

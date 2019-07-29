@@ -12,15 +12,15 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutController
  */
-@WebServlet("/logout")
+@WebServlet("/logout.todo")
 public class LogoutController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	HttpSession session = request.getSession(false);
 	
-	if(session ==null) {
-		response.sendRedirect("login.html");
-	}
+//	if(session ==null) {
+//		response.sendRedirect("login.html");
+//	}
 	session.removeAttribute("uid");
 	session.invalidate();
 	response.sendRedirect("logout.html");
